@@ -2,6 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-    background-color: lightgray;
+@layer base {
+    body {
+        @apply bg-slate-200;
+        @apply font-playFair;
+    }
+    h1 {
+        @apply text-4xl font-bold;
+    }
+    h2 {
+        @apply text-3xl font-bold;
+    }
+    h3 {
+        @apply text-2xl font-bold;
+    }
+    h4 {
+        @apply text-xl font-bold;
+    }
+    h5 {
+        @apply text-lg font-bold;
+    }
+    h6 {
+        @apply text-sm font-bold;
+    }
+
+    form {
+        @apply bg-white flex p-6 flex-col w-fit;
+    }
+
+    form input {
+        @apply border-b-[1px] border-b-slate-300 outline-0;
+        @apply focus:border-b-blue-600;
+    }
 }

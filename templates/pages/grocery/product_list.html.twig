@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Product List{% endblock %}
+
+{% block body %}
+    <div class="flex gap-2 flex-col m-3">
+        {% for product in products %}
+            <div class="p-2 w-fit rounded-md shadow bg-white border-md border-black">
+                <h4 class="">{{ product.name }}</h4>
+
+                <p>{{ product.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <p>Ajouter un produit</p>
+        {{ form_start(form) }}
+            {{ form_rest(form) }}
+            <button type="submit">Enregistrer</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

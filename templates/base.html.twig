@@ -1,20 +1,47 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} - {{ AppName }}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
 
-        {% block javascripts %}
-            {{ importmap() }}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+    <header class="flex border-b-[1px] bg-white border-b-slate-300 p-3.5">
+        <a href={{ path('app_landing') }}>
+            <h1>{{ AppName }}</h1>
+        </a>
+        <ul>
+            {% if not app.user %}
+                <li>
+                    <a href="{{ path('app_login') }}">Login</a>
+                </li>
+                <li>
+                    <a href="{{ path('app_register') }}">Register</a>
+                </li>
+            {%  else %}
+                <li>
+                    <a href="{{ path('user_profile') }}">Profile</a>
+                </li>
+                <li>
+                    <a href="{{ path('product_list') }}">Products</a>
+                </li>
+                <li>
+                    <a href="{{ path('grocery_list_list') }}">List</a>
+                </li>
+            {% endif %}
+        </ul>
+    </header>
         {% block body %}{% endblock %}
-    </body>
+</body>
 </html>

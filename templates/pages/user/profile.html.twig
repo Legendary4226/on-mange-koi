@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Landing{% endblock %}
+
+{% block body %}
+    <h1>Profil</h1>
+    <ul>
+        <li>{{ user.username }}</li>
+        <li>{{ user.email }}</li>
+    </ul>
+{% endblock %}
